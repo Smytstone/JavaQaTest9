@@ -42,6 +42,15 @@ public class RadioTest {
     }
 
     @Test
+    public void shouldGetNumberOfStations() {
+        Radio radio = new Radio(44);
+        radio.next();
+
+        Assertions.assertEquals(1, radio.getCurrentRadioStationNumber());
+    }
+
+
+    @Test
     public void shouldSetRadioStationNumberNext() {
         Radio radio = new Radio();
 
