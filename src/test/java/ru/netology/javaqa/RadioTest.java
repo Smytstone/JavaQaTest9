@@ -42,13 +42,35 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldSetRadioStationNumberNext() {
+    public void shouldGetNumberOfStations() {
+        Radio radio = new Radio(44);
+        radio.next();
+
+        Assertions.assertEquals(1, radio.getCurrentRadioStationNumber());
+    }
+
+
+    @Test
+    public void shouldSetRadioStationNumberNextTestCase1() {
         Radio radio = new Radio();
 
         radio.setCurrentRadioStationNumber(8);
         radio.next();
 
         int expected = 9;
+        int actual = radio.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetRadioStationNumberNextTestCase2() {
+        Radio radio = new Radio(20);
+
+        radio.setCurrentRadioStationNumber(15);
+        radio.next();
+
+        int expected = 16;
         int actual = radio.getCurrentRadioStationNumber();
 
         Assertions.assertEquals(expected, actual);
