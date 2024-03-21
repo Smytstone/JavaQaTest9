@@ -35,7 +35,7 @@ public class Radio {
     }
 
     public void setCurrentRadioStationNumber(int newRadioStationNumber) {
-        if (newRadioStationNumber > 9) {
+        if (newRadioStationNumber > numberOfStations - 1) {
             return;
         }
         if (newRadioStationNumber < 0) {
