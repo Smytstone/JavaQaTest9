@@ -16,11 +16,27 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldSetCurrentRadioStationVolume() {
+    public void shouldSetCurrentRadioStationVolumeTestCase1() {
         Radio radio = new Radio();
-        radio.setCurrentSoundVolume(88);
+        radio.setCurrentSoundVolume(22);
 
-        Assertions.assertEquals(88, radio.getCurrentSoundVolume());
+        Assertions.assertEquals(22, radio.getCurrentSoundVolume());
+    }
+
+    @Test
+    public void shouldSetCurrentRadioStationVolumeTestCase2() {
+        Radio radio = new Radio();
+        radio.setCurrentSoundVolume(120);
+
+        Assertions.assertEquals(0, radio.getCurrentSoundVolume());
+    }
+
+    @Test
+    public void shouldSetCurrentRadioStationVolumeTestCase3() {
+        Radio radio = new Radio();
+        radio.setCurrentSoundVolume(-20);
+
+        Assertions.assertEquals(0, radio.getCurrentSoundVolume());
     }
 
     @Test

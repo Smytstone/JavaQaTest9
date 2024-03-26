@@ -13,6 +13,16 @@ public class Radio {
     private int currentRadioStationNumber = minStation;
     private int currentSoundVolume;
 
+    public void setCurrentSoundVolume(int currentSoundVolume) {
+        if (currentSoundVolume > 100) {
+            return;
+        }
+        if (currentSoundVolume < 0) {
+            return;
+        }
+        this.currentSoundVolume = currentSoundVolume;
+    }
+
     public void next() {
         if (currentRadioStationNumber == numberOfStations - 1) {
             currentRadioStationNumber = minStation;
