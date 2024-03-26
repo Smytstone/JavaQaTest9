@@ -1,50 +1,49 @@
 package ru.netology.javaqa;
-public class Radio {
-    private int currentRadioStationNumber;
 
-    public int getCurrentRadioStationNumber() {
-        return currentRadioStationNumber;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Radio {
+    private int numberOfStations = 10;
+    private int minStation = 0;
+    private int currentRadioStationNumber = minStation;
+    private int currentSoundVolume;
+
+    public void setCurrentSoundVolume(int currentSoundVolume) {
+        if (currentSoundVolume > 100) {
+            return;
+        }
+        if (currentSoundVolume < 0) {
+            return;
+        }
+        this.currentSoundVolume = currentSoundVolume;
     }
 
     public void next() {
-        if (currentRadioStationNumber == 9) {
-            currentRadioStationNumber = 0;
+        if (currentRadioStationNumber == numberOfStations - 1) {
+            currentRadioStationNumber = minStation;
         } else {
             currentRadioStationNumber++;
         }
-        return;
     }
 
     public void prev() {
-        if (currentRadioStationNumber == 0) {
-            currentRadioStationNumber = 9;
+        if (currentRadioStationNumber == minStation) {
+            currentRadioStationNumber = numberOfStations - 1;
         } else {
             currentRadioStationNumber--;
         }
-        return;
-    }
-
-    public void setCurrentRadioStationNumber(int newRadioStationNumber) {
-        if (newRadioStationNumber > 9) {
-            return;
-        }
-        if (newRadioStationNumber < 0) {
-            return;
-        }
-        currentRadioStationNumber = newRadioStationNumber;
-    }
-
-    private int currentSoundVolume;
-
-    public int getCurrentSoundVolume() {
-        return currentSoundVolume;
     }
 
     public void increaseVolume() {
         if (currentSoundVolume < 100) {
             currentSoundVolume++;
         } else {
-            currentSoundVolume = currentSoundVolume;
+            currentSoundVolume = 0;
         }
     }
 
@@ -52,8 +51,8 @@ public class Radio {
         if (currentSoundVolume > 0) {
             currentSoundVolume--;
         } else {
-            currentSoundVolume = currentSoundVolume;
+            currentSoundVolume = 100;
         }
     }
-
 }
+
