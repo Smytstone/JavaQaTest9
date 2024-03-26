@@ -18,7 +18,6 @@ public class RadioTest {
     @Test
     public void shouldSetCurrentRadioStationVolume() {
         Radio radio = new Radio();
-
         radio.setCurrentSoundVolume(88);
 
         Assertions.assertEquals(88, radio.getCurrentSoundVolume());
@@ -78,5 +77,76 @@ public class RadioTest {
         radio.setCurrentRadioStationNumber(8);
 
         Assertions.assertEquals(8, radio.getCurrentRadioStationNumber());
+    }
+
+    @Test
+    public void shouldGetNextRadioStationTestCase1() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStationNumber(9);
+        radio.next();
+
+        Assertions.assertEquals(0, radio.getCurrentRadioStationNumber());
+    }
+
+    @Test
+    public void shouldGetNextRadioStationTestCase2() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStationNumber(8);
+        radio.next();
+
+        Assertions.assertEquals(9, radio.getCurrentRadioStationNumber());
+    }
+
+    @Test
+    public void shouldGetPrevRadioStationTestCase1() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStationNumber(0);
+        radio.prev();
+
+        Assertions.assertEquals(9, radio.getCurrentRadioStationNumber());
+    }
+
+    @Test
+    public void shouldGetPrevRadioStationTestCase2() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStationNumber(1);
+        radio.prev();
+
+        Assertions.assertEquals(0, radio.getCurrentRadioStationNumber());
+    }
+    @Test
+    public void shouldIncreaseRadioStationVolumeTestCase1() {
+        Radio radio = new Radio();
+        radio.setCurrentSoundVolume(90);
+        radio.increaseVolume();
+
+        Assertions.assertEquals(91, radio.getCurrentSoundVolume());
+    }
+
+    @Test
+    public void shouldIncreaseRadioStationVolumeTestCase2() {
+        Radio radio = new Radio();
+        radio.setCurrentSoundVolume(100);
+        radio.increaseVolume();
+
+        Assertions.assertEquals(0, radio.getCurrentSoundVolume());
+    }
+
+    @Test
+    public void shouldReduceRadioStationVolumeTestCase1() {
+        Radio radio = new Radio();
+        radio.setCurrentSoundVolume(90);
+        radio.reducingVolume();
+
+        Assertions.assertEquals(89, radio.getCurrentSoundVolume());
+    }
+
+    @Test
+    public void shouldReduceRadioStationVolumeTestCase2() {
+        Radio radio = new Radio();
+        radio.setCurrentSoundVolume(0);
+        radio.reducingVolume();
+
+        Assertions.assertEquals(100, radio.getCurrentSoundVolume());
     }
 }
