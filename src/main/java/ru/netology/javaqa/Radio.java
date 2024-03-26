@@ -12,5 +12,6 @@ public class Radio {
     private int minStation = 0;
     private int currentRadioStationNumber = minStation;
     private int currentSoundVolume;
+    
 }
 
